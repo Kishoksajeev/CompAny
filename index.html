@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Comparison Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Smart Comparison Analyzer</h1>
+            <p>AI researches specifications and compares any product automatically</p>
+        </header>
+
+        <!-- Product Selection -->
+        <section class="product-section">
+            <h2>🎯 What do you want to compare?</h2>
+            <div class="product-selection">
+                <input type="text" id="productType" placeholder="e.g., Elevator, Smartphone, Laptop, Air Conditioner" value="Elevator">
+                <input type="text" id="productUseCase" placeholder="e.g., Residential Building, Gaming, Office Use" value="Residential Building">
+                <button onclick="researchSpecifications()" class="research-btn">🔍 AI Research Specifications</button>
+            </div>
+        </section>
+
+        <!-- AI Research Progress -->
+        <div id="researchProgress" class="research-progress hidden">
+            <div class="spinner"></div>
+            <h3>🤖 AI is researching important specifications...</h3>
+            <div id="researchSteps"></div>
+        </div>
+
+        <!-- AI Generated Specification Framework -->
+        <section id="specFramework" class="spec-framework hidden">
+            <h2>📋 AI-Generated Comparison Framework</h2>
+            <div id="aiSpecifications"></div>
+            <button onclick="proceedToUpload()" class="proceed-btn">✅ Proceed to Document Upload</button>
+        </section>
+
+        <!-- Document Upload Section -->
+        <section id="uploadSection" class="upload-section hidden">
+            <h2>📁 Upload Product Documents</h2>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="documentFiles" accept=".pdf,.doc,.docx,.txt" multiple>
+                <div class="upload-placeholder">
+                    <span>📄 Drop PDFs, Word docs, or text files here</span>
+                    <small>Quotations, specifications, brochures - any related documents</small>
+                </div>
+                <div id="documentList" class="file-list"></div>
+            </div>
+            <button onclick="analyzeDocuments()" id="analyzeBtn">🔍 AI Analyze Documents</button>
+        </section>
+
+        <!-- Analysis Progress -->
+        <div id="analysisProgress" class="analysis-progress hidden">
+            <div class="spinner"></div>
+            <h3>📊 AI is analyzing documents and filling comparison table...</h3>
+            <div id="analysisSteps"></div>
+        </div>
+
+        <!-- Final Comparison Results -->
+        <section id="comparisonResults" class="comparison-results hidden">
+            <h2>🏆 AI Comparison Results</h2>
+            <div class="results-header">
+                <div id="productSummary"></div>
+                <button onclick="exportComparison()" class="export-btn">📊 Export Full Report</button>
+            </div>
+            
+            <div class="comparison-tabs">
+                <button class="tab-button active" onclick="openTab('specsTab')">📋 Specifications</button>
+                <button class="tab-button" onclick="openTab('priceTab')">💰 Pricing</button>
+                <button class="tab-button" onclick="openTab('featuresTab')">⭐ Features</button>
+                <button class="tab-button" onclick="openTab('aiTab')">🤖 AI Analysis</button>
+            </div>
+
+            <div id="specsTab" class="tab-content active">
+                <div id="specsComparison"></div>
+            </div>
+            
+            <div id="priceTab" class="tab-content">
+                <div id="priceComparison"></div>
+            </div>
+            
+            <div id="featuresTab" class="tab-content">
+                <div id="featuresComparison"></div>
+            </div>
+            
+            <div id="aiTab" class="tab-content">
+                <div id="aiRecommendations"></div>
+            </div>
+        </section>
+
+        <!-- Manual Data Entry -->
+        <section class="manual-entry">
+            <h2>➕ Add Product Manually</h2>
+            <div id="manualForm"></div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="app.js"></script>
+    <script src="ai-research.js"></script>
+</body>
+</html>
